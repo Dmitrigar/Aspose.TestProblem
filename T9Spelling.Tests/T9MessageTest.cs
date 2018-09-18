@@ -69,6 +69,8 @@ namespace T9Spelling
             new Dictionary<string, string>()
             {
                 { "aa", "2 2" },
+                { "abcdefg", "2 22 2223 33 3334" },
+                { "ab + cd + ef + gh", "2 22101222310133 3331014 44" },
             }
             .ToList()
             .ForEach(x => Assert.Equal(x.Value, new T9Message(x.Key)));
