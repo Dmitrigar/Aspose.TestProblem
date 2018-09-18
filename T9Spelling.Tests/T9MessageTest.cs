@@ -62,5 +62,16 @@ namespace T9Spelling
             .ToList()
             .ForEach(x => Assert.Equal(x.Value, new T9Message(x.Key)));
         }
+
+        [Fact]
+        public void SameCharactersGivesRightSequence()
+        {
+            new Dictionary<string, string>()
+            {
+                { "aa", "2 2" },
+            }
+            .ToList()
+            .ForEach(x => Assert.Equal(x.Value, new T9Message(x.Key)));
+        }
     }
 }

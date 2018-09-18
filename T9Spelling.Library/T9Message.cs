@@ -6,6 +6,8 @@ namespace T9Spelling
 {
     public class T9Message
     {
+        const char Pause = ' ';
+
         private string _latin;
 
         public T9Message(string latin)
@@ -34,7 +36,21 @@ namespace T9Spelling
 
         private StringBuilder AppendSingleCharacterSequence(StringBuilder digital, char ch)
         {
-            return digital.Append(TranslateSingleCharacter(ch));
+            var sequence = TranslateSingleCharacter(ch);
+            AppendPauseIfNecessary(digital, sequence);
+            return digital.Append(sequence);
+        }
+
+        private void AppendPauseIfNecessary(StringBuilder digital, string sequence)
+        {
+            if (IsPauseNecessary(digital, sequence))
+                digital.Append(Pause);
+        }
+
+        private bool IsPauseNecessary(StringBuilder digital, string sequence)
+        {
+            var len = digital.Length;
+            return len > 0 && digital[len - 1] == sequence[0];
         }
 
         private string TranslateSingleCharacter(char ch)
