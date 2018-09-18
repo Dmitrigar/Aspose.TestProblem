@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace T9Spelling
 {
@@ -20,12 +22,24 @@ namespace T9Spelling
         {
             return string.IsNullOrEmpty(_latin)
                 ? string.Empty
-                : TranslateSingleCharacter(_latin[0]);
+                : TranslateMessage(_latin);
         }
 
-        private string TranslateSingleCharacter(char x)
+        private string TranslateMessage(string latin)
         {
-            switch (x)
+            return latin
+                .Aggregate(new StringBuilder(), AppendSingleCharacterSequence)
+                .ToString();
+        }
+
+        private StringBuilder AppendSingleCharacterSequence(StringBuilder digital, char ch)
+        {
+            return digital.Append(TranslateSingleCharacter(ch));
+        }
+
+        private string TranslateSingleCharacter(char ch)
+        {
+            switch (ch)
             {
                 case ' ': return "1";
                 case 'a': return "2";

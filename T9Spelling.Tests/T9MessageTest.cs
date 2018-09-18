@@ -49,5 +49,18 @@ namespace T9Spelling
             .ToList()
             .ForEach(x => Assert.Equal(x.Value, new T9Message(x.Key)));
         }
+
+        [Fact]
+        public void DifferentDigitCharactersGivesRightSequence()
+        {
+            new Dictionary<string, string>()
+            {
+                { "ax", "299" },
+                { "a+x", "2099" },
+                { "a+x is ax", "2099144477771299" },
+            }
+            .ToList()
+            .ForEach(x => Assert.Equal(x.Value, new T9Message(x.Key)));
+        }
     }
 }
