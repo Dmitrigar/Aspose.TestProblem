@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.IO;
 
 namespace T9Spelling
 {
@@ -6,26 +8,43 @@ namespace T9Spelling
     {
         static void Main(string[] args)
         {
-            if (!IsValidArgs(args))
+            var limitPolicy = GetLimitPolicy(args);
+            var casesNumber = ReadCasesNumber(limitPolicy);
+            for (int position = 1; position <= casesNumber; ++position)
             {
-                Console.WriteLine("* The T9Spelling program *");
-                Console.WriteLine("    This program translates latin character message to T9 digital button keypress sequence.");
-                Console.WriteLine();
-                Console.WriteLine("Usage:");
-                Console.WriteLine("    t9spelling.exe <input-file-path> [--small-input|--large-input]");
-                Console.WriteLine();
+                var latin = ReadMessage(position, limitPolicy);
+                var digital = new T9Message(latin);
+                Console.WriteLine($"Case #{position}: {digital}");
             }
         }
 
-        public static bool IsValidArgs(string[] args)
+        static ILimitPolicy GetLimitPolicy(string[] args)
         {
-            if (args == null)
-                return false;
-            
-            if (args.Length < 1)
-                return false;
+            return args != null && args.Any() && args.First() == "--small"
+                ? (ILimitPolicy)new SmallModeLimitPolicy()
+                : new LargeModeLimitPolicy();
+        }
 
-            return true;
+        static int ReadCasesNumber(ILimitPolicy limitPolicy)
+        {
+            var firstLine = Console.ReadLine();
+            if (!int.TryParse(firstLine, out int n))
+                throw new InvalidDataException(
+                    $"First line must be a number. Got: `{firstLine}`.");
+
+            limitPolicy.EnforceCasesNumberLimit(n);
+            return n;
+        }
+
+        static string ReadMessage(int position, ILimitPolicy limitPolicy)
+        {
+            var message = Console.ReadLine();
+            if (message == null)
+                throw new InvalidDataException(
+                    $"Expected message at position {position}. Got null.");
+
+            limitPolicy.EnforceMessageLengthLimit(message);
+            return message;
         }
     }
 }
