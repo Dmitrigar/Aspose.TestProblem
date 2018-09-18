@@ -19,7 +19,13 @@ namespace T9Spelling
 
         public static bool IsValidArgs(string[] args)
         {
-            return args != null;
+            if (args == null)
+                return false;
+            
+            if (args.Length < 1)
+                return false;
+
+            return true;
         }
     }
 }

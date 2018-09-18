@@ -12,5 +12,11 @@ namespace T9Spelling
         {
             Assert.False(Program.IsValidArgs(null));
         }
+
+        [Fact]
+        public void LessThanOneArgConsideredInvalid()
+        {
+            Assert.False(Program.IsValidArgs(new string[0]));
+        }
     }
 }
