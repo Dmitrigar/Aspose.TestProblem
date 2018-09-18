@@ -56,7 +56,7 @@ namespace T9Spelling
         {
             switch (ch)
             {
-                case ' ': return "1";
+                case ' ': return "0";
                 case 'a': return "2";
                 case 'b': return "22";
                 case 'c': return "222";
@@ -83,7 +83,6 @@ namespace T9Spelling
                 case 'x': return "99";
                 case 'y': return "999";
                 case 'z': return "9999";
-                case '+': return "0";
                 default: return string.Empty;
             }
         }

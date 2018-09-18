@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace T9Spelling
@@ -15,65 +13,49 @@ namespace T9Spelling
         [Fact]
         public void SingleCharacterGivesRightSequence()
         {
-            new Dictionary<string, string>()
-            {
-                { " ", "1"   },
-                { "a", "2"   },
-                { "b", "22"  },
-                { "c", "222" },
-                { "d", "3"   },
-                { "e", "33"  },
-                { "f", "333" },
-                { "g", "4"   },
-                { "h", "44"  },
-                { "i", "444" },
-                { "j", "5"   },
-                { "k", "55"  },
-                { "l", "555" },
-                { "m", "6"   },
-                { "n", "66"  },
-                { "o", "666" },
-                { "p", "7"   },
-                { "q", "77"  },
-                { "r", "777" },
-                { "s", "7777"},
-                { "t", "8"   },
-                { "u", "88"  },
-                { "v", "888" },
-                { "w", "9"   },
-                { "x", "99"  },
-                { "y", "999" },
-                { "z", "9999"},
-                { "+", "0"   },
-            }
-            .ToList()
-            .ForEach(x => Assert.Equal(x.Value, new T9Message(x.Key)));
+            Assert.Equal("0", new T9Message(" "));
+            Assert.Equal("2", new T9Message("a"));
+            Assert.Equal("22", new T9Message("b"));
+            Assert.Equal("222", new T9Message("c"));
+            Assert.Equal("3", new T9Message("d"));
+            Assert.Equal("33", new T9Message("e"));
+            Assert.Equal("333", new T9Message("f"));
+            Assert.Equal("4", new T9Message("g"));
+            Assert.Equal("44", new T9Message("h"));
+            Assert.Equal("444", new T9Message("i"));
+            Assert.Equal("5", new T9Message("j"));
+            Assert.Equal("55", new T9Message("k"));
+            Assert.Equal("555", new T9Message("l"));
+            Assert.Equal("6", new T9Message("m"));
+            Assert.Equal("66", new T9Message("n"));
+            Assert.Equal("666", new T9Message("o"));
+            Assert.Equal("7", new T9Message("p"));
+            Assert.Equal("77", new T9Message("q"));
+            Assert.Equal("777", new T9Message("r"));
+            Assert.Equal("7777", new T9Message("s"));
+            Assert.Equal("8", new T9Message("t"));
+            Assert.Equal("88", new T9Message("u"));
+            Assert.Equal("888", new T9Message("v"));
+            Assert.Equal("9", new T9Message("w"));
+            Assert.Equal("99", new T9Message("x"));
+            Assert.Equal("999", new T9Message("y"));
+            Assert.Equal("9999", new T9Message("z"));
         }
 
         [Fact]
         public void DifferentDigitCharactersGivesRightSequence()
         {
-            new Dictionary<string, string>()
-            {
-                { "ax", "299" },
-                { "a+x", "2099" },
-                { "a+x is ax", "2099144477771299" },
-            }
-            .ToList()
-            .ForEach(x => Assert.Equal(x.Value, new T9Message(x.Key)));
+            Assert.Equal("299", new T9Message("ax"));
+            Assert.Equal("233399", new T9Message("afx"));
+            Assert.Equal("299044477770299", new T9Message("ax is ax"));
         }
 
         [Fact]
         public void SameCharactersGivesRightSequence()
         {
-            new Dictionary<string, string>()
-            {
-                { "aa", "2 2" },
-                { "abcdefg", "2 22 2223 33 3334" },
-                { "ab + cd + ef + gh", "2 22101222310133 3331014 44" },
-            }
-            .ToList()
-            .ForEach(x => Assert.Equal(x.Value, new T9Message(x.Key)));
+            Assert.Equal("2 2", new T9Message("aa"));
+            Assert.Equal("2 22 2223 33 3334", new T9Message("abcdefg"));
+            Assert.Equal("2 2202223033 33304 44", new T9Message("ab cd ef gh"));
         }
     }
 }
