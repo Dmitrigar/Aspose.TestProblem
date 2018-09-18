@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\T9Spelling.Library\T9Spelling.Library.csproj" />
-    <ProjectReference Include="..\T9Spelling\T9Spelling.csproj" />
   </ItemGroup>
 
 </Project>
