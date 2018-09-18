@@ -4,16 +4,24 @@ namespace T9Spelling
 {
     public class T9Message
     {
-        public string Latin
+        private string _latin;
+
+        public T9Message(string latin)
         {
-            set
-            {
-                Digital = string.IsNullOrEmpty(value)
-                    ? string.Empty
-                    : TranslateSingleCharacter(value[0]);
-            }
+            _latin = latin;
         }
-        public string Digital { get; private set; }
+
+        public static implicit operator string(T9Message x)
+        {
+            return x.ToString();
+        }
+
+        public override string ToString()
+        {
+            return string.IsNullOrEmpty(_latin)
+                ? string.Empty
+                : TranslateSingleCharacter(_latin[0]);
+        }
 
         private string TranslateSingleCharacter(char x)
         {
