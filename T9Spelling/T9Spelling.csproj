@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <StartupObject>T9Spelling.Program</StartupObject>
+    <Description>Translates latin character messages into T9 digital button sequences.</Description>
   </PropertyGroup>
 
   <ItemGroup>
