@@ -1,7 +1,6 @@
 using Xunit;
-using T9Spelling.Library;
 
-namespace T9Spelling.Tests
+namespace T9Spelling
 {
     public class T9MessageTest
     {
