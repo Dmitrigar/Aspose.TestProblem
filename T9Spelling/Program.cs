@@ -2,11 +2,24 @@
 
 namespace T9Spelling
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if (!IsValidArgs(args))
+            {
+                Console.WriteLine("* The T9Spelling program *");
+                Console.WriteLine("    This program translates latin character message to T9 digital button keypress sequence.");
+                Console.WriteLine();
+                Console.WriteLine("Usage:");
+                Console.WriteLine("    t9spelling.exe <input-file-path> [--small-input|--large-input]");
+                Console.WriteLine();
+            }
+        }
+
+        public static bool IsValidArgs(string[] args)
+        {
+            return args != null;
         }
     }
 }
