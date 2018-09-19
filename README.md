@@ -10,8 +10,13 @@ Go to precompiled version directory:
 
 Run one of test input files:
 - Small input file in small dataset mode (1 to 15 characters per message):
+
     cat ./C-small-practice.in | dotnet T9Spelling.dll --small
+
 - Large input file in large dataset mode (1 to 1000 characters per message):
+
     cat ./C-large-practice.in | dotnet T9Spelling.dll
+
 - Large input file in small mode (to see an error):
+
     cat ./C-large-practice.in | dotnet T9Spelling.dll --small
