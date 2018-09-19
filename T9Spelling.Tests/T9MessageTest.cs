@@ -51,7 +51,7 @@ namespace T9Spelling
         }
 
         [Fact]
-        public void SameCharactersGivesRightSequence()
+        public void SameDigitCharactersTogetherGivesPauseBetween()
         {
             Assert.Equal("2 2", new T9Message("aa"));
             Assert.Equal("2 22 2223 33 3334", new T9Message("abcdefg"));
