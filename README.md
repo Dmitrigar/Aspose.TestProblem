@@ -7,7 +7,7 @@ https://code.google.com/codejam/contest/dashboard?c=351101#s=p2
 
 Go to precompiled version directory:
 
-`cd ./T9Spelling/bin/Release/netcoreapp2.1/publish`
+`cd ./precompiled`
 
 Run one of test input files:
 - Small input file in small dataset mode (1 to 15 characters per message):

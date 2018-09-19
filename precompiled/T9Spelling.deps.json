@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "T9Spelling/1.0.0": {
+        "dependencies": {
+          "T9Spelling.Library": "1.0.0"
+        },
+        "runtime": {
+          "T9Spelling.dll": {}
+        }
+      },
+      "T9Spelling.Library/1.0.0": {
+        "runtime": {
+          "T9Spelling.Library.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "T9Spelling/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "T9Spelling.Library/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
