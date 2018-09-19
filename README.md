@@ -5,7 +5,7 @@ This is a solution for the particular problem on Code Jam:
 
 ## Running precompiled version in PowerShell
 
-- Download and unzip last binary release.
+- Download and unzip latest binary release.
 
 - Start PowerShell in the unzipped directory (one with T9Spelling.dll).
 
